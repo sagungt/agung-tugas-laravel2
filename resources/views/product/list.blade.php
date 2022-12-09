@@ -9,6 +9,11 @@
       Add Product
     </a>
   </div>
+  @if (session('message'))
+    <div class="relative py-3 pl-4 pr-10 leading-normal text-red-700 bg-red-100 rounded-lg my-2" role="alert">
+      <p>{{ session('message') }}</p>
+    </div>
+  @endif
   <div class="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 gap-4 px-2 md:mx-0 lg:px-0">
     @foreach ($products as $product)
       @includeIf('product.product', ['product' => $product])

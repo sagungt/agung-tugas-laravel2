@@ -29,7 +29,7 @@ class ProductController extends Controller
         $path = $request->getSchemeAndHttpHost() . '/storage/images/' . $photo->hashName();
         $payload['photo'] = $path;
         Product::create($payload);
-        return redirect()->back();
+        return redirect()->back()->with(['message' => 'Product created']);
     }
 
     public function detail($id) {
@@ -56,7 +56,7 @@ class ProductController extends Controller
         $product->fill($filtered);
         $product->save();
 
-        return redirect()->back();
+        return redirect()->back()->with(['message' => 'Product updated']);
     }
 
     public function destroy($id, Request $request) {
@@ -70,6 +70,6 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with(['message' => 'Product deleted']);
     }
 }

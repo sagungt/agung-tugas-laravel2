@@ -10,6 +10,11 @@
       Home
     </a>
   </div>
+  @if (session('message'))
+    <div class="relative py-3 pl-4 pr-10 leading-normal text-green-700 bg-green-100 rounded-lg my-2" role="alert">
+      <p>{{ session('message') }}</p>
+    </div>
+  @endif
   <div class="flex flex-row gap-8">
     <div class="w-full md:w-1/2 lg:w-1/2">
       <form method="POST" action="{{ route('product.update', ['id' => $product->id]) }}" enctype="multipart/form-data">
