@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 
@@ -28,4 +29,17 @@ Route::prefix('products')
         Route::put('/{id}', 'update')->name('update');
         Route::post('/add', 'create')->name('create');
         Route::get('/{id}/delete', 'destroy')->name('destroy');
+    });
+
+Route::prefix('posts')
+    ->name('post.')
+    ->controller(PostController::class)
+    ->group(function () {
+        Route::get('/', 'index')->name('list');
+        Route::get('/add', 'store')->name('store');
+        Route::post('/add', 'create')->name('create');
+        Route::get('/{slug}', 'detail')->name('detail');
+        Route::get('/{slug}/edit', 'edit')->name('edit');
+        Route::put('/{slug}', 'update')->name('update');
+        Route::get('/{slug}/delete', 'destroy')->name('destroy');
     });
